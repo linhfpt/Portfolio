@@ -214,3 +214,6 @@
         width: 100%;
     }
 }
+.show{
+    display: block;
+}

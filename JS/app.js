@@ -58,20 +58,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 var listYoutubeVideo = jsObject.items;
                 var htmlResult = "";
                 for (var i = 0; i < listYoutubeVideo.length; i++) {
-                    htmlResult += `<div class="youtube-item">
+                    htmlResult += `<div id="items" class="youtube-item">
                         <div class="thumbnail">
-
-                            <img src="${listYoutubeVideo[i].snippet.thumbnails.high.url}" alt="">
+                            <img type="button" id="myImg" src="${listYoutubeVideo[i].snippet.thumbnails.high.url}" alt="">
                         </div>
                         <div class="title ellipsis">${listYoutubeVideo[i].snippet.title}</div>
                         <div class="description ellipsis">
                             ${listYoutubeVideo[i].snippet.description}
                         </div>
                         <!-- Modal video -->
-                        <div id="myModal" class="modal">
+                        <div class="modal">
                         <span class="close">&times;</span>
+                        <div class="modal-content">
                         <iframe src="https://www.youtube.com/embed/${listYoutubeVideo[i].id.videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <div id="caption"></div>
+                            </div>  
+                        <div id="caption">${listYoutubeVideo[i].snippet.title}</div>
                             </div>
                     </div>`;
                 }
@@ -82,30 +83,31 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         // console.log(this.status);
+
     }
     // mở một kết nối đến địa chỉ cho sẵn, với phương thức gửi dữ liệu là GET.
-    loadApi.open("GET", `https://content.googleapis.com/youtube/v3/search?q=" "&type=video&maxResults=9&part=snippet&key=AIzaSyAiVq8q1v8_Dw2O2jKrzQo9CXTOkoT8Cgk`)
+    loadApi.open("GET", `https://content.googleapis.com/youtube/v3/search?q=" "&type=video&maxResults=9&part=snippet&key=AIzaSyCqBYbQd2bXFLcJaL9QRpzuceZghpV4WSQ`)
     // dữ liệu thực sự được gửi đi.
     loadApi.send();
-});
 
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg");
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-img.onclick = function () {
-    modal.style.display = "block";
-    modalImg.src = this.src;
-    captionText.innerHTML = this.alt;
-}
-
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var item = document.getElementsByClassName("youtube-item");
+    var itemStyle = document.getElementsByClassName('modal').style;
+    console.log(item);
+    console.log(itemStyle);
+    if(item != null){
+        for (var i =0; i < item.length; i++){
+            item[i].onclick = function (){
+                // Get the modal
+                document.getElementsByClassName('modal').style.display = 'block'
+            }
+        }
+    }
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+    var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-    modal.style.display = "none";
-}
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+});
