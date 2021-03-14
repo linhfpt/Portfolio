@@ -9,19 +9,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-
 </head>
 <body>
-<div class="header-ctn">
-    <div class="logo-wrapper">
-        <img id="logo" src="./img/logo.png">
+<div class="header-ctn sticky">
+    <div class="warpper">
+        <div class="logo-wrapper">
+            <img id="logo" src="./img/logo.png">
+        </div>
+        <form action="#" name="search-form" class="search-ctn">
+            <input type="text" name="keyword" class="searchTerm">
+            <input type="button" value="Search" name="search" class="searchButton">
+        </form>
     </div>
-    <form action="#" name="search-form" class="search-ctn">
-        <input type="text" name="keyword" class="searchTerm">
-        <input type="button" value="Search" name="search" class="searchButton">
-    </form>
+    <div class="categories">
+        <section class="category-section">
+            <button class="category active">All</button>
+            <button class="category">Category 1</button>
+            <button class="category">Category 2</button>
+            <button class="category">Category 3</button>
+            <button class="category">Category 4</button>
+            <button class="category">Category 5</button>
+            <button class="category">Category 6</button>
+            <button class="category">Category 7</button>
+            <button class="category">Category 8</button>
+            <button class="category">Category 9</button>
+        </section>
+    </div>
 </div>
-<div id="result">
+<div id="result" class="display">
+
 </div>
 </body>
 <script src="js/app.js"></script>
